@@ -1,0 +1,14 @@
+# Maintainer: Giuseppe Masino <dev.giuseppemasino@outlook.it>
+pkgname=xinput-toggle-qub1750ul
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="A simple shell script to enable/disable an xinput device"
+arch=('any')
+url="https://facebook.com/dev.giuseppemasino"
+license=('MIT')
+depends=('xorg-xinput')
+conflicts=('xinput-toggle')
+
+package() {
+	install -D -m 755 $srcdir/xinput-toggle $pkgdir/usr/bin
+}

@@ -1,0 +1,27 @@
+#Maintainer: Giuseppe Masino <dev.giuseppemasino@outlook.com>
+pkgname=dotfile-vcs-check-git
+pkgver=1.0.0
+pkgrel=1
+epoch=
+pkgdesc="A script that checks for changes in a dotfile git repository"
+arch=(any)
+url=""
+license=('CC BY-SA')
+depends=('bash>=3.0.0' 'git' 'libnotify')
+makedepends=('argbash' 'coreutils')
+optdepends=('systemd: scheduling support')
+provides=('dotfile-vcs-check')
+changelog=
+source=("git+https://github.com/qub1750ul/dotfile-vcs-check")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/dotfile-vcs-check"
+	git log -n 1 --pretty=%cI | tr -d T:+-
+}
+
+package()
+	{
+		cd "${srcdir}/dotfile-vcs-check"
+		./install "${pkgdir}"
+	}

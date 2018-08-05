@@ -1,0 +1,20 @@
+# Maintainer: Giuseppe Masino (qub1750ul) <dev.giuseppemasino@outlook.it>
+pkgname=minimalx-vlc-latest
+pkgver=3.0.0
+pkgrel=1
+epoch=
+pkgdesc="A flat, blocky theme for VLC with a simple layout, crisp white icons and an uncluttered play window"
+arch=('any')
+url="https://maverick07x.deviantart.com/art/VLC-MinimalX-385698882"
+license=('© Maverick07x')
+depends=('vlc')
+source=("https://orig00.deviantart.net/14fb/f/2018/087/3/c/vlc___minimalx_by_maverick07x-d6dmv5u.rar")
+sha512sums=('SKIP')
+
+pkgver() {
+	echo *.vlt | sed -e s/^.*_// -e s/.vlt$//
+}
+
+package() {
+	install -D -m 644 *.vlt "${pkgdir}/usr/share/vlc/skins2/MinimalX.vlt"
+}
